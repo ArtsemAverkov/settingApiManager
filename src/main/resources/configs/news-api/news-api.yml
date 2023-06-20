@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: news-api
+#  cloud:
+#    config:
+#      activate:
+#        on-profile: prod
