@@ -1,13 +1,11 @@
 spring:
-  application:
-    profiles: test
+  profiles: test
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: root
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: testuser
+    password: testpassword
     driver-class-name: org.postgresql.Driver
   jpa:
-    database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
@@ -15,3 +13,27 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/changelog.xml
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  security:
+      oauth2:
+        client:
+          registration:
+            google:
+              client-id: 193430038350-g9i5on14tnkuekrcuf8utuvb0e8lcjff.apps.googleusercontent.com
+              client-secret: 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
+              scope: openid
+
+  aop:
+    proxy-target-class: false
+  cache:
+    max-size: 100
+    algorithm: LRU
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
